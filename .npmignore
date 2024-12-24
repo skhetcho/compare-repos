@@ -1,0 +1,23 @@
+# Source
+src/
+
+# Tests
+test/
+__tests__/
+
+# Config files
+.github/
+.gitignore
+tsconfig.json
+jest.config.js
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# System files
+.DS_Store

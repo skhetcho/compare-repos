@@ -1,0 +1,22 @@
+# generate a git ignore file
+.DS_Store
+.env
+.env.local
+.env.development
+
+# node_modules
+node_modules/
+
+# dist
+dist/
+
+# package-lock.json
+package-lock.json
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
