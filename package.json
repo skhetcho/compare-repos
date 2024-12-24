@@ -2,14 +2,13 @@
   "name": "compare-repos",
   "version": "1.0.0",
   "description": "A command-line tool to compare two code repositories and analyze their similarities and differences.",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skhetcho/compare-repos.git"
-  },
+  "main": "./dist/index.js",
   "bin": {
-    "compare-repos": "dist/cli.js"
+    "compare-repos": "./dist/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "build": "tsc",
@@ -39,5 +38,9 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skhetcho/compare-repos.git"
   }
 }
