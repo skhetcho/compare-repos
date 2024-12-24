@@ -3,13 +3,13 @@ import * as path from 'path';
 import { diffLines, Change } from 'diff';
 import chalk from 'chalk';
 
-interface FileComparison {
+export interface FileComparison {
   similarity: number;
   differences: Change[];
   path: string;
 }
 
-interface ComparisonSummary {
+export interface ComparisonSummary {
   totalFiles: {
     repo1: number;
     repo2: number;
@@ -22,7 +22,7 @@ interface ComparisonSummary {
   differentFiles: string[];
 }
 
-interface DetailedComparison {
+export interface DetailedComparison {
   summary: ComparisonSummary;
   fileComparisons: Record<string, FileComparison>;
 }
@@ -100,11 +100,12 @@ export class RepoComparator {
 
       const differences = diffLines(content1, content2);
       
-      const totalLines = differences.reduce((sum, change) => sum + (change.count || 0), 0);
-      const changedLines = differences.reduce((sum, change) => 
-        sum + (change.added || change.removed ? (change.count || 0) : 0), 0
-      );
-      const similarity = ((totalLines - changedLines) / totalLines) * 100;
+      // Calculate similarity based on words
+      const words1 = content1.split(/\s+/).filter(word => word.length > 0);
+      const words2 = content2.split(/\s+/).filter(word => word.length > 0);
+      
+      const commonWords = words1.filter(word => words2.includes(word));
+      const similarity = (commonWords.length * 2) / (words1.length + words2.length) * 100;
 
       return {
         similarity: Math.round(similarity * 100) / 100,
